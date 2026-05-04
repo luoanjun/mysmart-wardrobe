@@ -1,0 +1,13 @@
+services:
+  wardrobe:
+    image: wardrobe:latest
+    ports:
+      - "15156:8080"
+    volumes:
+      - ./data:/app/data
+      - ./uploads:/app/uploads
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - DB_PATH=/app/data/wardrobe.db
+      - UPLOAD_PATH=/app/uploads
+    restart: unless-stopped
